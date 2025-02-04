@@ -1,0 +1,35 @@
+.pagina-o {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  height: 32px;
+  justify-content: center;
+  position: relative;
+  width: 792px;
+}
+
+.pagina-o .design-component-instance-node {
+  flex: 0 0 auto !important;
+}
+
+.pagina-o .ellipsis-wrapper {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  width: 32px;
+}
+
+.pagina-o .ellipsis {
+  height: 20px !important;
+  margin-bottom: -2.00px !important;
+  margin-left: -2.00px !important;
+  margin-right: -2.00px !important;
+  margin-top: -2.00px !important;
+  position: relative !important;
+  width: 20px !important;
+}

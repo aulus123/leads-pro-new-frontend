@@ -1,0 +1,35 @@
+.button-number {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  width: 32px;
+}
+
+.button-number .element {
+  color: var(--gray-800);
+  font-family: var(--body-medium-font-family);
+  font-size: var(--body-medium-font-size);
+  font-style: var(--body-medium-font-style);
+  font-weight: var(--body-medium-font-weight);
+  letter-spacing: var(--body-medium-letter-spacing);
+  line-height: var(--body-medium-line-height);
+  margin-bottom: -3.00px;
+  margin-top: -5.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button-number.selected-true {
+  border: 1px solid;
+  border-color: var(--slate-200);
+}
+
+.button-number:hover {
+  background-color: var(--gray-100);
+}

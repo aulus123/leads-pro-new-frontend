@@ -1,0 +1,35 @@
+.button-prev {
+  align-items: center;
+  border-radius: 6px;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  opacity: 0.5;
+  padding: 4px 12px 4px 4px;
+  position: relative;
+}
+
+.button-prev .chevron-left {
+  height: 20px !important;
+  position: relative !important;
+  width: 20px !important;
+}
+
+.button-prev .text-wrapper {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--gray-800);
+  display: -webkit-box;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-style: var(--body-font-style);
+  font-weight: var(--body-font-weight);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+  margin-top: -1.00px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: fit-content;
+}

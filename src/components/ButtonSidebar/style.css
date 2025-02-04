@@ -1,0 +1,52 @@
+.button-sidebar {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  gap: 12px;
+  height: 40px;
+  overflow: hidden;
+  padding: 8px 16px;
+  position: relative;
+  width: 208px;
+}
+
+.button-sidebar .company {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  margin-top: -1.00px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button-sidebar .ticket-1 {
+  height: 20px !important;
+  position: relative !important;
+  width: 20px !important;
+}
+
+.button-sidebar.selected {
+  background-color: var(--blue-50);
+}
+
+.button-sidebar.selected .company {
+  color: var(--blue-600);
+  font-family: "Inter", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.button-sidebar.default .company {
+  color: var(--gray-800);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-style: var(--body-font-style);
+  font-weight: var(--body-font-weight);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}

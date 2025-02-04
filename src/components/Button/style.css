@@ -1,0 +1,56 @@
+.button {
+  all: unset;
+  align-items: center;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.button .icon-mail {
+  height: 16px;
+  position: relative;
+  width: 16px;
+}
+
+.button .login-with-email {
+  color: #ffffff;
+  font-family: var(--body-medium-font-family);
+  font-size: var(--body-medium-font-size);
+  font-style: var(--body-medium-font-style);
+  font-weight: var(--body-medium-font-weight);
+  letter-spacing: var(--body-medium-letter-spacing);
+  line-height: var(--body-medium-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button.just-icon {
+  border: 1px solid;
+  border-color: var(--slate-200);
+  padding: 8px;
+}
+
+.button.with-icon {
+  padding: 8px 16px;
+}
+
+.button.hover.with-icon {
+  background-color: var(--blue-700);
+}
+
+.button.just-icon.default {
+  background-color: var(--white);
+}
+
+.button.just-icon.hover {
+  background-color: var(--slate-100);
+}
+
+.button.default.with-icon {
+  background-color: var(--blue-600);
+}

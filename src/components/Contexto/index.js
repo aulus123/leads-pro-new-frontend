@@ -1,0 +1,1 @@
+export { Contexto } from "./Contexto";
