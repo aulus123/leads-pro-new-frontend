@@ -1,6 +1,6 @@
 .sidebar {
   align-items: center;
-  background-color: #ffffff;
+  background-color: #d20a0a;
   border-color: var(--gray-200);
   border-right-style: solid;
   border-right-width: 1px;
@@ -10,7 +10,7 @@
   height: 1024px;
   padding: 24px 16px;
   position: relative;
-  width: 240px;
+  width: 260px;
 }
 
 .sidebar .logo {
