@@ -1,14 +1,18 @@
 .contexto {
-  align-items: center;
   background-color: #ffffff;
   border: 1px solid;
   border-color: #cbd5e1;
   border-radius: 6px;
+  position: relative;
+  width: 144px;
+}
+
+.contexto-header {
+  align-items: center;
   display: flex;
   gap: 6px;
   padding: 8px 10px;
-  position: relative;
-  width: 144px;
+  cursor: pointer;
 }
 
 .contexto .frame {
@@ -39,6 +43,39 @@
   height: 20px !important;
   position: relative !important;
   width: 20px !important;
+  transition: transform 0.2s ease;
+}
+
+.contexto .chevron-down.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 8px 10px;
+  color: var(--gray-900);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f5f9;
 }
 
 .contexto .building {

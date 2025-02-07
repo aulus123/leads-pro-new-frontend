@@ -1,10 +1,5 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Building2_1 } from "../../icons/Building2_1";
 import { Building2_4 } from "../../icons/Building2_4";
 import { CircleDollarSign } from "../../icons/CircleDollarSign";
@@ -19,24 +14,47 @@ import { ButtonSidebar } from "../ButtonSidebar";
 import { Contexto } from "../Contexto";
 import "./style.css";
 
-export const Sidebar = ({
-  className,
-  contextoIcon = <Building2_4 className="icon-instance-node" />,
-  override = <MapPin3 className="icon-instance-node" />,
-  buttonSidebarState = "selected",
-  buttonSidebarIcon = (
-    <LayoutDashboard2 className="icon-instance-node-2" color="#2563EB" />
-  ),
-  buttonSidebarIcon1 = <Building2_1 className="icon-instance-node-2" />,
-  buttonSidebarIcon2 = <MapPin4 className="icon-instance-node-2" />,
-  buttonSidebarIcon3 = <Handshake2 className="icon-instance-node-2" />,
-  buttonSidebarState1 = "default",
-  buttonSidebarIcon4 = (
-    <Wrench className="icon-instance-node-2" color="#64748B" />
-  ),
-  buttonSidebarIcon5 = <Users2 className="icon-instance-node-2" />,
-  buttonSidebarIcon6 = <CircleDollarSign className="icon-instance-node-2" />,
-}) => {
+export const Sidebar = ({ className }) => {
+  const [companies, setCompanies] = useState([]);
+  const [offices, setOffices] = useState([]);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedOffice, setSelectedOffice] = useState(null);
+
+  useEffect(() => {
+    // Fetch companies
+    fetch('http://localhost:3000/companies')
+      .then(response => response.json())
+      .then(data => setCompanies(data))
+      .catch(error => console.error('Error fetching companies:', error));
+  }, []);
+
+  useEffect(() => {
+    // Fetch offices when a company is selected
+    if (selectedCompany) {
+      fetch('http://localhost:3000/offices')
+        .then(response => response.json())
+        .then(data => {
+          const filteredOffices = data.filter(
+            office => office.id_company === selectedCompany.id_company
+          );
+          setOffices(filteredOffices);
+          setSelectedOffice(null); // Reset selected office when company changes
+        })
+        .catch(error => console.error('Error fetching offices:', error));
+    } else {
+      setOffices([]);
+      setSelectedOffice(null);
+    }
+  }, [selectedCompany]);
+
+  const handleCompanySelect = (company) => {
+    setSelectedCompany(company);
+  };
+
+  const handleOfficeSelect = (office) => {
+    setSelectedOffice(office);
+  };
+
   return (
     <div className={`sidebar ${className}`}>
       <div className="logo">
@@ -50,10 +68,20 @@ export const Sidebar = ({
       <div className="div">
         <Contexto
           className="contexto-instance"
-          icon={contextoIcon}
-          text="Company"
+          icon={<Building2_4 className="icon-instance-node" />}
+          text={selectedCompany ? selectedCompany.nm_company : "Select Company"}
+          options={companies}
+          onSelect={handleCompanySelect}
+          type="company"
         />
-        <Contexto className="contexto-instance" icon={override} text="Office" />
+        <Contexto
+          className="contexto-instance"
+          icon={<MapPin3 className="icon-instance-node" />}
+          text={selectedOffice ? selectedOffice.nm_office : "Select Office"}
+          options={offices}
+          onSelect={handleOfficeSelect}
+          type="office"
+        />
       </div>
 
       <img className="line" alt="Line" src="/img/line-4.svg" />
@@ -61,43 +89,43 @@ export const Sidebar = ({
       <div className="menu">
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon}
-          state={buttonSidebarState}
+          icon={<LayoutDashboard2 className="icon-instance-node-2" color="#2563EB" />}
+          state="selected"
           text="Dashboard"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon1}
+          icon={<Building2_1 className="icon-instance-node-2" />}
           state="default"
           text="Company"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon2}
+          icon={<MapPin4 className="icon-instance-node-2" />}
           state="default"
           text="Office"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon3}
+          icon={<Handshake2 className="icon-instance-node-2" />}
           state="default"
           text="Representative"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon4}
-          state={buttonSidebarState1}
+          icon={<Wrench className="icon-instance-node-2" color="#64748B" />}
+          state="default"
           text="Services"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon5}
+          icon={<Users2 className="icon-instance-node-2" />}
           state="default"
           text="Leads"
         />
         <ButtonSidebar
           className="button-sidebar-instance"
-          icon={buttonSidebarIcon6}
+          icon={<CircleDollarSign className="icon-instance-node-2" />}
           state="default"
           text="Commission Report"
         />
